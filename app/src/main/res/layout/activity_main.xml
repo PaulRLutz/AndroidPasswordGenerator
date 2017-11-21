@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.paulrlutz.passwordgenerator.MainActivity"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/EditTextStyle"
+            android:id="@+id/textInputLayoutGeneratedPassword"
+            >
+            <EditText
+                style="@style/EditTextStyle"
+                android:id="@+id/editTextGeneratedPassword"
+                android:ems="10"
+                android:hint="Generated Password"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            style="@style/LabelStyle"
+            android:id="@+id/btnGeneratePassword"
+            android:text="Generate Password"
+            android:layout_below="@+id/textInputLayoutGeneratedPassword"
+            />
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/EditTextStyle"
+            android:id="@+id/textInputLayoutSeparator"
+            android:layout_below="@+id/btnGeneratePassword"
+            >
+            <EditText
+                style="@style/EditTextStyle"
+                android:id="@+id/editTextSeparator"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Separator"
+                />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            style="@style/EditTextStyle"
+            android:id="@+id/textInputLayoutPasswordLength"
+            android:layout_below="@+id/textInputLayoutSeparator"
+            >
+            <EditText
+                style="@style/EditTextStyle"
+                android:id="@+id/editTextPasswordLength"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="Password Length"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            style="@style/HeaderLabelStyle"
+            android:id="@+id/lblWords"
+            android:text="Words"
+            android:layout_below="@+id/textInputLayoutPasswordLength"
+            />
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/EditTextStyle"
+            android:id="@+id/textInputLayoutNumberOfWords"
+            android:layout_below="@+id/lblWords"
+            >
+            <EditText
+                style="@style/EditTextStyle"
+                android:id="@+id/editTextNumberOfWords"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="Number of Words"
+                />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            style="@style/EditTextStyle"
+            android:id="@+id/textInputLayoutMinimumWordLength"
+            android:layout_below="@+id/textInputLayoutNumberOfWords"
+            >
+            <EditText
+                style="@style/EditTextStyle"
+                android:id="@+id/editTextMinimumWordLength"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="Minimum Word Length"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/EditTextStyle"
+            android:id="@+id/textInputLayoutMaximumWordLength"
+            android:layout_below="@+id/textInputLayoutMinimumWordLength"
+            >
+            <EditText
+                style="@style/EditTextStyle"
+                android:id="@+id/editTextMaximumWordLength"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="Maximum Word Length"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+
+
+
+
+
+        <TextView
+            style="@style/HeaderLabelStyle"
+            android:id="@+id/lblNumbers"
+            android:text="Numbers"
+            android:layout_below="@+id/textInputLayoutMaximumWordLength"
+            />
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/EditTextStyle"
+            android:id="@+id/textInputLayoutNumbersToUse"
+            android:layout_below="@+id/lblNumbers"
+            >
+            <EditText
+                style="@style/EditTextStyle"
+                android:id="@+id/editTextNumbersToUse"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="Numbers to Use"
+                />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            style="@style/EditTextStyle"
+            android:id="@+id/textInputLayoutNumberOfNumbers"
+            android:layout_below="@+id/textInputLayoutNumbersToUse"
+            >
+            <EditText
+                style="@style/EditTextStyle"
+                android:id="@+id/editTextNumberOfNumbers"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="Number of Numbers"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayoutNumbersCheckboxes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textInputLayoutNumberOfNumbers"
+            android:orientation="horizontal">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxNumbersGrouped"
+            android:text="Grouped"
+            />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxNumbersSeparated"
+            android:text="Separated"
+            />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/LabelStyle"
+            android:id="@+id/lblNumbersLocation"
+            android:layout_below="@+id/linearLayoutNumbersCheckboxes"
+            android:text="Numbers Location" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/lblNumbersLocation"
+            android:id="@+id/radioGroupNumbers" >
+
+        <RadioButton
+            android:checked="true"
+            android:id="@+id/radioButtonNumbersRandom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Random" />
+
+        <RadioButton
+            android:id="@+id/radioButtonNumbersBeginning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beginning" />
+
+        <RadioButton
+            android:id="@+id/radioButtonNumbersEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End" />
+        </RadioGroup>
+
+
+
+
+
+
+
+
+
+
+
+        <TextView
+            style="@style/HeaderLabelStyle"
+            android:id="@+id/lblSpecialCharacters"
+            android:text="Special Characters"
+            android:layout_below="@+id/radioGroupNumbers"
+            />
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/EditTextStyle"
+            android:id="@+id/textInputLayoutSpecialCharactersToUse"
+            android:layout_below="@+id/lblSpecialCharacters"
+            >
+            <EditText
+                style="@style/EditTextStyle"
+                android:id="@+id/editTextSpecialCharactersToUse"
+                android:ems="10"
+                android:hint="Special Characters to Use"
+                />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            style="@style/EditTextStyle"
+            android:id="@+id/textInputLayoutNumberOfSpecialCharacters"
+            android:layout_below="@+id/textInputLayoutSpecialCharactersToUse"
+            >
+            <EditText
+                style="@style/EditTextStyle"
+                android:id="@+id/editTextNumberOfSpecialCharacters"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="Number of Special Characters to Use"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayoutSpecialCharactersCheckboxes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textInputLayoutNumberOfSpecialCharacters"
+            android:orientation="horizontal">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxSpecialCharactersGrouped"
+            android:text="Grouped"
+            />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxSpecialCharactersSeparated"
+            android:text="Separated"
+            />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/LabelStyle"
+            android:id="@+id/lblSpecialCharactersLocation"
+            android:layout_below="@+id/linearLayoutSpecialCharactersCheckboxes"
+            android:text="Special Characters Location" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/lblSpecialCharactersLocation"
+            android:id="@+id/radioGroupSpecialCharacters" >
+
+        <RadioButton
+            android:checked="true"
+            android:id="@+id/radioButtonSpecialCharactersRandom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Random" />
+
+        <RadioButton
+            android:id="@+id/radioButtonSpecialCharactersBeginning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beginning" />
+
+        <RadioButton
+            android:id="@+id/radioButtonSpecialCharactersEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End" />
+        </RadioGroup>
+
+    </RelativeLayout>
+
+</LinearLayout>
+</ScrollView>
