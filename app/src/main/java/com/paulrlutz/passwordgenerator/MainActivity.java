@@ -58,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
         prefs = getApplicationContext().getSharedPreferences("prefs", 0);
 
+        WordListManager wlm = new WordListManager();
+        wlm.setup(this, prefs);
+
         instantiateViews();
 
         Button btnGeneratePassword = (Button) findViewById(R.id.btnGeneratePassword);
@@ -104,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         char[] specialCharsArray = (editTextSpecialCharactersToUse.getText() + "").toCharArray();
 
         try {
-            String password = PasswordGenerator.generatePassword(
+            String password = PasswordGenerator.generatePassword(prefs,
                 separator, passwordLength, numWords, minWordLength, maxWordLength, capsType,
                 numbersArray, numNumbers, numbersGrouped, numbersLocation,
                 specialCharsArray, numSpecialChars, specialCharsGrouped, specialCharsLocation
@@ -301,7 +304,7 @@ class TextWatcherSharedPrefs implements TextWatcher {
     }
 
     @Override
-        public void afterTextChanged(Editable s) {
+    public void afterTextChanged(Editable s) {
 
-        }
+    }
 }

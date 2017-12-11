@@ -1,5 +1,6 @@
 package com.paulrlutz.passwordgenerator;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.paulrlutz.passwordgenerator.Exceptions.WordsTooLongOrTooManyException;
@@ -21,14 +22,13 @@ public class PasswordGenerator {
         CAMEL, ALL, NONE
     }
 
-    public static String generatePassword(
+    public static String generatePassword(SharedPreferences prefs,
             String separator, int passwordLength, int numWords, int minWordLength, int maxWordLength, Capitalization capsType,
             char[] numbersArray, int numNumbers, boolean numbersGrouped, GroupLocation numbersLocation,
             char[] specialCharsArray, int numSpecialChars, boolean specialCharsGrouped, GroupLocation specialCharsLocation
         ) throws WordsTooLongOrTooManyException, WordsTooShortOrTooFewException {
 
-        ArrayList<ArrayList<String>> wordsArrayList = null;
-        wordsArrayList = getFakeWords();
+        WordListManager wlm = new WordListManager();
 
         int specialCharsCharNum = numSpecialChars;
         if (numSpecialChars == 0) {
@@ -87,7 +87,7 @@ public class PasswordGenerator {
             }
             int wordDelta = 0;
             if (wordDeltaMax >= 1) {
-                wordDelta = rand(0, wordDeltaMax);
+                wordDelta = Utilities.rand(0, wordDeltaMax);
             }
             Log.d(TAG, "word delta : " + wordDelta);
             wordLengths[sentinel] += wordDelta;
@@ -105,17 +105,17 @@ public class PasswordGenerator {
         ArrayList<String> chunks = new ArrayList<>();
         for (int i = 0; i < wordLengths.length; i++ ) {
             int wordLength = wordLengths[i];
-            int randomWordIndex = rand(0, wordsArrayList.get(wordLength).size()-1);
-            String randomWord = wordsArrayList.get(wordLength).get(randomWordIndex);
+            String randomWord = wlm.getWordFromWordList(prefs, null, wordLength);
+            Log.d(TAG, "Random word: '" + randomWord + "'");
             chunks.add(randomWord);
         }
         ArrayList<String> specialChars = new ArrayList<>();
         for (int i = 0; i < numSpecialChars; i++ ) {
-            specialChars.add(specialCharsArray[rand(0, specialCharsArray.length - 1)] + "");
+            specialChars.add(specialCharsArray[Utilities.rand(0, specialCharsArray.length - 1)] + "");
         }
         ArrayList<String> numbers = new ArrayList<>();
         for (int i = 0; i < numNumbers; i++ ) {
-            numbers.add(numbersArray[rand(0, numbersArray.length - 1)] + "");
+            numbers.add(numbersArray[Utilities.rand(0, numbersArray.length - 1)] + "");
         }
         if (numbers.size() > 0) {
             chunks.addAll(numbers);
@@ -150,31 +150,6 @@ public class PasswordGenerator {
         return pass;
     }
 
-    private static int rand(int min, int max) {
-        Random rand = new Random();
-        return rand.nextInt(max + 1) + min;
-    }
-
-    private static ArrayList<ArrayList<String>> getFakeWords() {
-        String[] letters = {"A", "B", "C", "D", "E"};
-        ArrayList<ArrayList<String>> fakeWords = new ArrayList<>();
-        fakeWords.add(new ArrayList<String>());
-        fakeWords.add(new ArrayList<String>());
-        fakeWords.add(new ArrayList<String>());
-        for (int i = 3; i < 15; i++) {
-            ArrayList<String> words = new ArrayList<>();
-            for (String letter : letters) {
-                String word = i + "";
-                for (int j = 0; j < i - 2; j++) {
-                    word += " ";
-                }
-                word += letter;
-                words.add(word);
-            }
-            fakeWords.add(words);
-        }
-        return fakeWords;
-    }
 }
 
 

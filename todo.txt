@@ -1,0 +1,12 @@
+Coding quality:
+Tests
+More error checking (gracefully fail instead of crashing)
+Clarifying comments
+
+Functionality:
+Copy password to clipboard
+Manage(add/remove/edit) word lists
+
+Design:
+Better color scheme
+
